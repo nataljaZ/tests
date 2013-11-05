@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Tests</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/myCss.css" rel="stylesheet">
+	<link href="css/datepicker.css" rel="stylesheet">
+	
+  </head>
+
+  <body onload="initializePage()">
+
+	<div class="container">
+
+	
+	
+	
+	<div class="header">
+	<div class="navbar">
+	<div id="myRight">
+		<p class="navbar-text pull-right">
+				<span id="spanForUsername"></span>
+				<a id="logoutLink" href="#" onclick="logout()">Log out</a>
+				
+		</p>
+
+        <ul class="nav nav-pills pull-right" id="myLogin">
+			  <li><a href="#" onclick="signup()">Sign Up</a></li>
+			  <li class="dropdown">
+				<a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
+				<div class="dropdown-menu" style="height:250px;">
+					<form class="form-horizontal" id="loginForm" action="" method="POST">
+						<div class="form-group">
+							<label>e-mail</label>
+							<input type="text" name="username" id="username" class="form-control">
+						</div>
+						<div class="form-group">
+							<label>password</label>
+							<input type="password" name="password" id="password" class="form-control">
+						</div>
+						<div class="form-group">
+							<label id="error">Invalid e-mail or password!</label>
+						</div>
+						<button type='button' onclick='login()' class="btn btn-default btn-sm">Log in</button>
+						<div id="fbtn"><fb:login-button data-width="200" scope="email" size="small">Log in</fb:login-button></div>
+						<span id="signinButton"><div id="gbtn">
+						  <span
+							class="g-signin"
+							data-approvalprompt="force"
+							data-callback="signinCallback"
+							data-clientid="459153674879.apps.googleusercontent.com"
+							data-cookiepolicy="single_host_origin"
+							data-requestvisibleactions="http://schemas.google.com/AddActivity"
+							data-height="short"
+							data-scope="https://www.googleapis.com/auth/userinfo.email">
+						  </span></div>
+						</span>
+					</form>
+				</div>
+			  </li>
+			</ul>
+		</div>
+			<h3 class="text-muted">Tests</h3>
+		<hr>
+		</div>
+        
+	
+      </div>
+	
+
+	<div class="content">
+		<button type='button' onclick='addTest()' id="addTestBtn" class="btn btn-primary btn-sm">Add new test</button> 
+		<div id="alert" class="alert alert-success"><strong>Success!</strong> Changes have been saved.</div>	
+		<div id="alertW" class="alert alert-warning"><strong>Warning!</strong> You have status 'passive'. You cannot use programm until admin checks your data and changes your status to 'active'</div>
+		<div id="listOfResults"></div>
+	
+		<form class="form-horizontal" role="form" id="form1" action="" method="POST">
+			<input name="id" id="inputId" type="hidden"/>
+			<div class="form-group">
+				<label>Language</label>
+				<p>Choose language of a test. Language of a test can be estonian or english.</p>
+				<select name="language" id="inputLanguage" class="myInput form-control">
+					<option value="estonian" selected>estonian</option>
+					<option value="english">english</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label>Status</label>
+				<p>Status 'passive' means that students cannot see the test. When status is 'active' test is visible and available for students.</p>
+				<select name="status" id="inputStatus" class="myInput form-control">
+					<option value="active">active</option>
+					<option value="passive" selected>passive</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label>Student's authentication</label>
+				<p>Choose "yes" if you want student to authenticate via facebook or google to do the test. In this case student must sign in via facebook or google to save his answers of the test. Student's authentication data will be saved and available after exporting test's results.<br>Choose "no" if you do not want student to authenticate. In this case student do not need to login via facebook or google to do the test.</p>
+				<select name="auth" id="inputAuth" class="myInput form-control">
+					<option value="yes" selected>yes</option>
+					<option value="no">no</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label>From</label>
+				<p>Date from which test is available. This date will be visible on the list of all tests and after opening that test.</p>
+				<div class="myInput input-group">
+					<input type="text" name="from" id="inputFrom" class="form-control datepicker">
+					<span class="input-group-addon glyphicon glyphicon-calendar"></span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label>To</label>
+				<p>Date to which test is available (including this date). This date will be visible on the list of all tests and after opening that test.</p>
+				<div class="myInput input-group">
+					<input type="text" name="to" id="inputTo" class="form-control datepicker">
+					<span class="input-group-addon glyphicon glyphicon-calendar"></span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label>Title</label>
+				<p>Title of the test will be visible on the list of all tests and after opening that test.</p>
+				<input type="text" name="title" id="inputTitle" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>Description</label>
+				<p>Description of the test will be visible after opening that test.</p>
+				<input type="text" name="description" id="inputDescription" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>Questions </label>
+				<br>
+				
+				<div id="response">
+				   Question starts from new line with no special char at the beginning. Answer starts from new line with whitespace at the beginning. If you want field where student needs to put his own answer use * at new line.
+				
+				   <a href="#">Example</a>
+					<div class="new_r_div">
+						Question 1?<br>
+						&nbsp;answer 1<br>
+						&nbsp;answer 2<br>
+						Question 2?<br>
+						*<br>
+						Question 3?<br>
+						&nbsp;answer 1
+					</div>
+				</div>
+				<textarea name="questions" id="inputQuestions" class="form-control" rows="15"></textarea>
+			</div>
+			
+			<button type='button' onclick='submitAddTest()' class="btn btn-primary">Add</button>
+			<button type='button' onclick='back()' class="btn btn-default">Back</button>
+		</form>
+		<form class="form-horizontal" role="form" id="form2" action="" method="POST">
+			<input name="id" id="editInputId" type="hidden"/>
+			<div class="form-group">
+				<label>Language</label>
+				<p>Choose language of a test. Language of a test can be estonian or english.</p>
+				<select name="language" id="editInputLanguage" class="myInput form-control">
+					<option value="estonian" selected>estonian</option>
+					<option value="english">english</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label>Status</label>
+				<p>Status 'passive' means that students cannot see the test. When status is 'active' test is visible and available for students.</p>
+				<select name="status" id="editInputStatus" class="myInput form-control">
+					<option value="active">active</option>
+					<option value="passive" selected>passive</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label>Student's authentication</label>
+				<p>Choose "yes" if you want student to authenticate via facebook or google to do the test. In this case student must sign in via facebook or google to save his answers of the test. Student's authentication data will be saved and available after exporting test's results.<br>Choose "no" if you do not want student to authenticate. In this case student do not need to login via facebook or google to do the test.</p>
+				<select name="auth" id="editInputAuth" class="myInput form-control">
+					<option value="yes" selected>yes</option>
+					<option value="no">no</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label>From</label>
+				<p>Date from which test is available. This date will be visible on the list of all tests and after opening that test.</p>
+				<div class="myInput input-group">
+					<input type="text" name="from" id="editInputFrom" class="form-control datepicker">
+					<span class="input-group-addon glyphicon glyphicon-calendar"></span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label>To</label>
+				<p>Date to which test is available (including this date). This date will be visible on the list of all tests and after opening that test.</p>
+				<div class="myInput input-group">
+					<input type="text" name="to" id="editInputTo" class="form-control datepicker">
+					<span class="input-group-addon glyphicon glyphicon-calendar"></span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label>Title</label>
+				<p>Title of the test will be visible on the list of all tests and after opening that test.</p>
+				<input type="text" name="title" id="editInputTitle" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>Description</label>
+				<p>Description of the test will be visible after opening that test.</p>
+				<input type="text" name="description" id="editInputDescription" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>Questions</label>
+				<br>
+				
+				<div id="response2">
+				   Question starts from new line with no special char at the beginning. Answer starts from new line with whitespace at the beginning. If you want field where student needs to put his own answer use * at new line.
+				
+				   <a href="#">Example</a>
+					<div class="new_r_div">
+						Question 1?<br>
+						&nbsp;answer 1<br>
+						&nbsp;answer 2<br>
+						Question 2?<br>
+						*<br>
+						Question 3?<br>
+						&nbsp;answer 1
+					</div>
+				</div>
+				<textarea name="questions" id="editInputQuestions" class="form-control" rows="15"></textarea>
+			</div>
+			
+			<button type='button' onclick='submitEditTest()' class="btn btn-primary">Edit</button>
+			<button type='button' onclick='back()' class="btn btn-default">Back</button>
+		</form>
+		<form class="form-horizontal" role="form" id="form4" action="" method="POST">
+			<div class="form-group" id="inputFirstnField">
+				<label>First name</label>
+				<input type="text" name="firstn" id="inputFirstn" class="form-control"  onblur = "setInputStatus('inputFirstnField')" >
+				<span class="help-block"></span>
+			</div>
+			<div class="form-group" id="inputLastnField">
+				<label>Last name</label>
+				<input type="text" name="lastn" id="inputLastn" class="form-control"  onblur = "setInputStatus('inputLastnField')" >
+				<span class="help-block"></span>
+			</div>
+			<div class="form-group" id="inputEmailField">
+				<label>E-mail</label>
+				<input type="text" name="email" id="inputEmail" class="form-control"  onblur = "setInputStatus('inputEmailField')" >
+				<span class="help-block"></span>
+			</div>
+			<div class="form-group" id="inputPasswordField">
+				<label>Password</label>
+				<input type="text" name="password" id="inputPassword" class="form-control"  onblur = "setInputStatus('inputPasswordField')" >
+				<span class="help-block"></span>
+			</div>
+			<button type='button' onclick='submitSignUp()' class="btn btn-primary">Sign up</button>
+			<button type='button' onclick='closeSignUp()' class="btn btn-default">Close</button>
+		</form>
+	</div>
+
+	<div class="footer">
+	</div>
+
+	</div>
+	<!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/myScript.js"></script>
+	<script src="js/bootstrap-datepicker.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$('.datepicker').datepicker({
+		   weekStart: 1, // day of the week start. 0 for Sunday - 6 for Saturday
+		   format: "dd-mm-yyyy",
+		   autoclose: true
+		 });
+	})
+	</script>
+	<div id="fb-root"></div>
+	<script type="text/javascript">
+		window.fbAsyncInit = function() {
+			FB.init({
+			  appId      : '583808758321249', // App ID
+			  channelUrl : '//dijkstra.cs.ttu.ee/~t103931/startpage.html', // Channel File
+			  status     : false, // check login status
+			  cookie     : true, // enable cookies to allow the server to access the session
+			  xfbml      : true  // parse XFBML
+			});
+
+			FB.Event.subscribe('auth.authResponseChange', function(response){
+				 if (response.status === 'connected'){
+					loginFB(1);					
+				}   
+				else if (response.status === 'not_authorized'){
+					FB.login();
+				}else{
+				}
+			});
+
+		};
+		 //Load the SDK asynchronously
+		(function(d){
+			 var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+			 if (d.getElementById(id)) {return;}
+			 js = d.createElement('script'); js.id = id; js.async = true;
+			 js.src = "//connect.facebook.net/en_US/all.js";
+			 ref.parentNode.insertBefore(js, ref);
+		}(document));
+	</script>
+	
+	<script type="text/javascript">
+      (function() {
+       var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+       po.src = 'https://apis.google.com/js/client:plusone.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+     })();
+	 function signinCallback(authResult) {
+		if (authResult['access_token']) {
+			// Update the app to reflect a signed in user
+			// Hide the sign-in button now that the user is authorized, for example:
+			loginGoogle(1);
+		} else if (authResult['error']) {
+			// Update the app to reflect a signed out user
+			// Possible error values:
+			//   "user_signed_out" - User is signed-out
+			//   "access_denied" - User denied access to your app
+			//   "immediate_failed" - Could not automatically log in the user
+			console.log('Sign-in state: ' + authResult['error']);
+		}
+	}
+    </script>
+
+  </body>
+</html>
