@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Tests</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/myCss.css" rel="stylesheet">
+
+
+	
+  </head>
+
+  <body onload="showTest()">
+
+	<div class="container">
+		<div class="header">
+		</div>
+		<div class="content">
+			<span id="loginText"><b style="color:red;">You must sign in!</b></span>
+			<div id="loginbtns">
+				<button type="button" class="btn btn-default" id="facebookbtn" onclick="FB.login()"></button>
+				<button type="button" class="btn btn-default" id="googlebtn">Sign in</button>				
+			</div>
+			<div id="showTest">
+			<b><h2 id="titleOfTest"></h2></b>
+			<p id="descriptionOfTest"></p>
+			<p id="dateOfTest"></p>
+			<form class="form-horizontal" role="form" id="form3" action="cgi-bin/anssave.py" method="POST">
+			<input type="hidden" name="test_id">
+			<input type="hidden" name="loginId" id="inputLoginId">
+			<input type="hidden" name="loginName" id="inputLoginName">
+			<input type="hidden" name="loginEmail" id="inputLoginEmail">
+			<input type="hidden" name="loginMethod" id="inputLoginMethod">
+			<div class="form-group" id="inputStCodeField">
+				<label>Sinu matriklinumber</label>
+				<input type="text" name="stcode" id="inputStCode" class="form-control"  onblur = "setInputStatus('inputStCodeField')" >
+				<span class="help-block"></span>
+			</div>
+			<div class="form-group" id="inputFnameField">
+				<label>Sinu eesnimi</label>
+				<input type="text" name="stfirstn" id="inputFname" class="form-control"  onblur = "setInputStatus('inputFnameField')" >
+				<span class="help-block"></span>
+			</div>
+			<div class="form-group" id="inputLnameField">
+				<label>Sinu perekonnanimi</label>
+				<input type="text" name="stlastn" id="inputLname" class="form-control"  onblur = "setInputStatus('inputLnameField')" >
+				<span class="help-block"></span>
+			</div>
+			<div class="form-group" id="inputEmailField">
+				<label>Sinu email</label>
+				<input type="text" name="stemail" id="inputEmail" class="form-control"  onblur = "setInputStatus('inputEmailField')" >
+				<span class="help-block"></span>
+			</div>
+			
+			<fieldset>
+			<legend id="legendName">Kusimused</legend>
+			<p id="questionsOfTest"></p>
+			</fieldset>
+			<p>
+			&nbsp;
+			<p id="pForSave">
+			Salvestatud vastust enam muuta ei saa!<p>
+			<input id="btnSave" type="button" onclick="submitAnsSave()" value="Salvesta" class="btn btn-primary btn-lg" style="width:150px"/>
+			</form>
+			</div>
+		</div>
+		<div class="footer">
+		</div>
+
+	</div>
+<!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/myScript.js"></script>
+	<div id="fb-root"></div>
+	<script type="text/javascript">
+	if(checkLogin()==true){
+		window.fbAsyncInit = function() {
+			FB.init({
+			  appId      : '583808758321249', // App ID
+			  channelUrl : '//dijkstra.cs.ttu.ee/~t103931/startpage.html', // Channel File
+			  status     : true, // check login status
+			  cookie     : true, // enable cookies to allow the server to access the session
+			  xfbml      : true  // parse XFBML
+			});
+
+			FB.Event.subscribe('auth.authResponseChange', function(response){
+				 if (response.status === 'connected'){
+					loginFB(2);					
+				}   
+				else if (response.status === 'not_authorized'){
+					FB.login();
+				}else{
+				}
+			});
+
+		};
+		 //Load the SDK asynchronously
+		(function(d){
+			 var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+			 if (d.getElementById(id)) {return;}
+			 js = d.createElement('script'); js.id = id; js.async = true;
+			 js.src = "//connect.facebook.net/en_US/all.js";
+			 ref.parentNode.insertBefore(js, ref);
+		}(document));
+		
+		
+		  (function() {
+		   var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+		   po.src = 'https://apis.google.com/js/client:plusone.js?onload=render';
+		   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+		 })();
+		 function signinCallback(authResult) {
+			if (authResult['access_token']) {
+				// Update the app to reflect a signed in user
+				// Hide the sign-in button now that the user is authorized, for example:
+				loginGoogle(2);
+			} else if (authResult['error']) {
+				// Update the app to reflect a signed out user
+				// Possible error values:
+				//   "user_signed_out" - User is signed-out
+				//   "access_denied" - User denied access to your app
+				//   "immediate_failed" - Could not automatically log in the user
+				console.log('Sign-in state: ' + authResult['error']);
+			}
+		}
+		function render() {
+			gapi.signin.render('googlebtn', {
+			  'callback': 'signinCallback',
+			  'clientid': '459153674879.apps.googleusercontent.com',
+			  'cookiepolicy': 'single_host_origin',
+			  'requestvisibleactions': 'http://schemas.google.com/AddActivity',
+			  'scope': 'https://www.googleapis.com/auth/userinfo.email'
+			});
+		}
+	}
+    </script>
+</body>
+</html>
