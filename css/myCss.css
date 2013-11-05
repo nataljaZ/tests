@@ -1,0 +1,179 @@
+.container{
+	margin-top:50px;
+	width:65%;
+	padding:20px 40px;
+	text-align:left;
+	background:#fff;
+	margin-bottom:50px;
+	min-height:600px;
+}
+.content{
+	margin:auto;
+	/*height:500px;*/
+	width:80%;
+}
+#logoutLink{display:none;}
+#addTestBtn{display:none;}
+#form1{display:none;}
+#form2{display:none;}
+#form4{display:none;}
+#myRight{
+	margin-top:10px;
+}
+.myInput{
+	width:25%;
+}
+#error{
+	color:red;
+	display:none;
+}
+textarea{
+	resize:vertical;
+}
+body{   
+	background-image: url(http://dijkstra.cs.ttu.ee/~t103931/fonts/background.jpg);
+	background-repeat: repeat-x;
+	background-position: center 0;
+	background-color: #fff;
+	font:15px Trebuchet MS, Arial, Helvetica, Sans-Serif;
+	line-height:160%;
+	margin:0;
+	padding:0;
+	text-align:center;
+}
+
+#form3{
+  margin:1em 0;
+  padding-top:10px;
+  display:block;
+}
+#form3 fieldset{
+  margin-top:40px;
+  /*padding:0;*/
+  border: 1px groove #ddd !important;
+    padding: 0 1.4em 1.4em 1.4em !important;
+    /*margin: 0 0 1.5em 0 !important;*/
+    -webkit-box-shadow:  0px 0px 0px 0px #000;
+            box-shadow:  0px 0px 0px 0px #000;
+}	
+#form3 legend{
+	font-size: 1em !important;
+        font-weight: bold !important;
+        text-align: left !important;
+        width:auto;
+        border-bottom:none;
+}
+#form3 p{margin:.5em 0;}	
+#form3 label{display:block;}	
+#form3 .form-group{margin:0px;}
+#form3 .form-control{display:inline-block;}
+#form3 input{		
+  width:252px;
+  padding:3px;
+}	
+#form3 textarea{		
+  width:100%;
+  border:1px solid #ccc;
+  padding:3px;
+}
+#form4{
+	width:70%;
+	margin-left:30%;
+}
+#form4 input{
+	width:50%;
+}
+#form4 label{display:block;}
+#form4 .form-control{display:inline-block;}
+.help-block{
+	display:inline;
+}
+#loginForm input{		
+  width:150px;
+  margin:auto;
+}	#loginForm label{		
+  width:150px;
+  margin-left:20px;
+}
+#loginForm button{		
+  width:100px;
+  margin-left:5px;
+}	
+
+
+.new_r_div{
+position:absolute;
+width:100px;
+height:200px;
+background:#fff;
+overflow: hidden;
+border: solid 2px #ccc;
+z-index: 9999;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+visibility: hidden;
+padding:5px;
+}
+
+#response:hover .new_r_div
+{
+    visibility: visible;
+}
+#response2:hover .new_r_div
+{
+    visibility: visible;
+}
+.new_r_div li:hover{
+    background:red;
+}
+#addTestBtn{
+	margin-bottom:10px;
+}
+#alert{
+	display:none;
+	position: fixed;
+	top: 120px;
+	left: 40%;
+	z-index: 8000;
+}
+#alertW{
+	display:none;
+	position: fixed;
+	width:50%;
+	top: 300px;
+	z-index: 8000;
+}
+#fbtn{
+	margin:10px 2px 2px 5px;
+	float:left;
+}
+#gbtn{
+	margin:15px 2px 2px 2px;
+	float:left;
+}
+#facebookbtn{
+	background:url(http://dijkstra.cs.ttu.ee/~t103931/fonts/facebook.png);
+	background-repeat: no-repeat;
+	background-position: center 0;
+	width:120px; 
+	height:33px; 
+}
+#googlebtn{
+	background:url(http://dijkstra.cs.ttu.ee/~t103931/fonts/google.png);
+	background-repeat: no-repeat;
+	background-position: center 0;
+	width:120px; 
+	height:33px; 
+	color:white;
+	padding:0px 5px 2px 35px;
+	font-weight: bold;
+	font-size:15px;
+}
+#loginbtns{
+	float:right;
+}
+#showTest{
+	float:left;
+}
+#loginText,#facebookbtn,#googlebtn{display:none;}
