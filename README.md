@@ -8,6 +8,10 @@ Students then can see this test and do it. Test's results and information about 
 
 You can see a demo [here](http://dijkstra.cs.ttu.ee/~t103931/startpage.html).
 
+You can login as demo user to try programm.
+e-mail: demo@gmail.com
+password: demo
+
 ### Installation
 
 To install this web application you will need to copy all files to your server. Also you will need to create database.

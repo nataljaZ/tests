@@ -95,7 +95,7 @@ body{
   width:150px;
   margin-left:20px;
 }
-#loginForm button{		
+#loginbutton{		
   width:100px;
   margin-left:5px;
 }	
@@ -145,12 +145,22 @@ padding:5px;
 	z-index: 8000;
 }
 #fbtn{
-	margin:10px 2px 2px 5px;
-	float:left;
+	background:url(http://dijkstra.cs.ttu.ee/~t103931/fonts/fbtn.png);
+	background-repeat: no-repeat;
+	background-position: center 0;
+	width:70px; 
+	height:20px; 
 }
 #gbtn{
-	margin:15px 2px 2px 2px;
-	float:left;
+	background:url(http://dijkstra.cs.ttu.ee/~t103931/fonts/gbtn.png);
+	background-repeat: no-repeat;
+	background-position: center 0;
+	width:70px; 
+	height:20px; 
+	color:white;
+	padding:0px 5px 2px 20px;
+	font-weight: bold;
+	font-size:12px;
 }
 #facebookbtn{
 	background:url(http://dijkstra.cs.ttu.ee/~t103931/fonts/facebook.png);
