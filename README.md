@@ -21,3 +21,7 @@ Also in folder 'sqlite' are files written on python to work with database.
 To open application you will need file 'startpage.html'.
 
 After copying all files to server, you simply need to open webpage 'startpage.html' in your browser.
+
+### User guide
+
+You can read user guide [here] (https://github.com/nataljaZ/tests/blob/master/UserGuide.md)
