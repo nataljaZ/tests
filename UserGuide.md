@@ -6,20 +6,22 @@
 
 There are three methods to sign in into application:
 
-1.	**Primary login**. Click **Sign In** tab at the top-right corner to open login form. 
+1.	*Primary login*. Click **Sign In** tab at the top-right corner to open login form. 
 Fill in e-mail and password that you indicated in registration form. Click **Log in** button or press enter.
-2.	<u>Via Facebook**. Click **Sign In** tab at the top-right corner. 
+2.	*Via Facebook*. Click **Sign In** tab at the top-right corner. 
 Click **Facebook login button** and sign in via your Facebook account.
-3.	<u>Via Google**. Click **Sign In** tab at the top-right corner. 
+3.	*Via Google*. Click **Sign In** tab at the top-right corner. 
 Click **Google sign in button** and sign in via your Google account.
 
 #### Sign up
 
 In case you want to use primary login. Click **Sign Up** tab at the top-right corner to open registration form. 
 Fill in all fields and click **Sign up** button. Click **Close** button to return to the main page.
-<br>In case you want to use Facebook or Google login you do not need to sign up. 
+
+In case you want to use Facebook or Google login you do not need to sign up. 
 You will register automatically when you first time log in via your Facebook or Google account.
-<br>NB! After you sign up you will have status “passive” and cannot create tests until admin checks your data and changes status to “active”.
+
+NB! After you sign up you will have status “passive” and cannot create tests until admin checks your data and changes status to “active”.
 
 #### Add test
 
