@@ -8,9 +8,9 @@ Students then can see this test and do it. Test's results and information about 
 
 You can see a demo [here](http://dijkstra.cs.ttu.ee/~t103931/startpage.html).
 
-You can login as <b>demo user</b> to try programm.
-<br><b>e-mail:</b> demo@gmail.com
-<br><b>password:</b> demo
+You can login as **demo user** to try programm.
+**e-mail:** demo@gmail.com
+**password:** demo
 
 ### Installation
 

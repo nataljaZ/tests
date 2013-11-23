@@ -61,9 +61,11 @@ Choose test that you want to take and click on the title of this test (it is a l
 #### Take a test
 
 After choosing and clicking on the title of test that you want to take this test will open in new page.
-<br>In case you must sign in to take a test you will see  **Facebook login button** and **Google sign in button**. 
+
+In case you must sign in to take a test you will see  **Facebook login button** and **Google sign in button**. 
 You must log in via one of these methods. After you sign in via your account of Facebook or Google form for your personal data will fill in automatically. 
 You will need to fill in your student code. You can change your personal data in other fields. 
 After answering the questions click **Save** button.
-<br>In case you do not need to sign in you will see  form for your personal data and list of questions. 
+
+In case you do not need to sign in you will see  form for your personal data and list of questions. 
 You must fill in all fields of form with your personal data. After answering the questions click **Save** button.
