@@ -35,7 +35,7 @@ Fill in necessary fields and click **Add** button. Click **Back** button to retu
 
 Choose test from the list of all your tests that you want to modify. 
 Click **Edit** button next to the title of the test to open form for test editing. 
-Make necessary changes and click **Edit** button. Click **Back** button to return to the previous page.
+Make necessary changes and click **Save** button. Click **Back** button to return to the previous page.
 
 #### View test
 
@@ -46,6 +46,11 @@ This test will open in new page.
 
 You can export the results of test to Microsoft Office Excel. 
 Choose test from the list of all your tests which report you want to see. Click **Export** button next to the title of the test to open download window.
+
+#### View statistics
+You can watch statistics of test. 
+Choose test from the list of all your tests which statistics you want to see. 
+Click ***Statistics*** button next to the title of the test to open statistics in new window.
 
 #### Delete test
 
