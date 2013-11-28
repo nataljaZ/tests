@@ -66,13 +66,14 @@ function drawTests(){
 		}
 		
 	}else{
-		stringForListOfResults+="<table class='table'><tr><th>Title</th><th>From</th><th>To</th><th></th><th></th><th></th></tr>";
+		stringForListOfResults+="<table class='table'><tr><th>Title</th><th>From</th><th>To</th><th></th><th></th><th></th><th></th></tr>";
 		for(var testIndex in testsObj.tests){
 			if(currentUser==testsObj.tests[testIndex].teacher){
 				stringForListOfResults+="<tr><td><a href='testpage.html?id="+testsObj.tests[testIndex].id+"' target='_blank'>"+testsObj.tests[testIndex].title+
 				"</a></td><td>"+testsObj.tests[testIndex].datefrom+"</td><td>"+testsObj.tests[testIndex].dateto+"</td>"+
 				"<td><button type='button' onclick='editTest("+testIndex+")' class='btn btn-primary btn-sm'>Edit</button> </td>"+
 				"<td><button type='button' onclick='exportAns("+testsObj.tests[testIndex].id+")' class='btn btn-primary btn-sm'>Export</button> </td>"+
+				"<td><a href='cgi-bin/statistics.py?id="+testsObj.tests[testIndex].id+"' target='_blank' class='btn btn-primary btn-sm' role='button'>Statistics</a> </td>"+
 				"<td><button type='button' onclick='deleteTest("+testsObj.tests[testIndex].id+")' class='btn btn-primary btn-sm'><span class='glyphicon glyphicon-remove'></span></button></tr>";
 				counter++;
 			}
