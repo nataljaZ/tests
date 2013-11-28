@@ -3,6 +3,7 @@
 Tests is a web application. It is designed to create tests for students. 
 Teachers can sign up for it. After they sign in, they can create a test (title, description, dates, questions with set of answers).
 Students then can see this test and do it. Test's results and information about student are saved. Teacher can see test's results of each his student.
+Also teacher can watch test's statistics.
 
 ### Demo
 
